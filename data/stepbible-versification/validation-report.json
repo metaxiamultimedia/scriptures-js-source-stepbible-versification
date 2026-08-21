@@ -1,0 +1,904 @@
+{
+  "generatedAt": null,
+  "sha": "86ab0b75e195d3269c081201f2ff66afa10d5a30",
+  "pairs": {
+    "MT->LXX": {
+      "total": 4311,
+      "targetExists": 4161,
+      "targetMissing": 58,
+      "anchorChecked": 0,
+      "anchorOverlap": 0,
+      "anchorConflicts": 0,
+      "mappedToNull": 92,
+      "conflictSamples": [],
+      "missingSamples": [
+        {
+          "key": "Exodus 36:34",
+          "target": "Exodus 37:22"
+        },
+        {
+          "key": "Deuteronomy 23:3",
+          "target": "Deuteronomy 23:2"
+        },
+        {
+          "key": "Deuteronomy 23:13",
+          "target": "Deuteronomy 23:12"
+        },
+        {
+          "key": "1 Kings 5:18",
+          "target": "1 Kings 5:18"
+        },
+        {
+          "key": "1 Kings 5:19",
+          "target": "1 Kings 5:19"
+        },
+        {
+          "key": "1 Kings 5:20",
+          "target": "1 Kings 5:20"
+        },
+        {
+          "key": "1 Kings 5:21",
+          "target": "1 Kings 5:21"
+        },
+        {
+          "key": "1 Kings 5:22",
+          "target": "1 Kings 5:22"
+        },
+        {
+          "key": "1 Kings 5:23",
+          "target": "1 Kings 5:23"
+        },
+        {
+          "key": "1 Kings 5:24",
+          "target": "1 Kings 5:24"
+        },
+        {
+          "key": "1 Kings 5:25",
+          "target": "1 Kings 5:25"
+        },
+        {
+          "key": "1 Kings 5:26",
+          "target": "1 Kings 5:26"
+        },
+        {
+          "key": "1 Kings 5:27",
+          "target": "1 Kings 5:27"
+        },
+        {
+          "key": "1 Kings 5:28",
+          "target": "1 Kings 5:28"
+        },
+        {
+          "key": "1 Kings 5:29",
+          "target": "1 Kings 5:29"
+        },
+        {
+          "key": "1 Kings 5:30",
+          "target": "1 Kings 5:30"
+        },
+        {
+          "key": "1 Kings 12:17",
+          "target": "1 Kings 12:17"
+        },
+        {
+          "key": "1 Kings 21:11",
+          "target": "1 Kings 20:11"
+        },
+        {
+          "key": "1 Kings 21:12",
+          "target": "1 Kings 20:12"
+        },
+        {
+          "key": "Nehemiah 10:12",
+          "target": "Nehemiah 10:11"
+        },
+        {
+          "key": "Esther 4:6",
+          "target": "Esther 4:6"
+        },
+        {
+          "key": "Esther 9:32",
+          "target": "Esther 9:32"
+        },
+        {
+          "key": "Psalms 44:8",
+          "target": "Psalms 43:8"
+        },
+        {
+          "key": "Psalms 55:6",
+          "target": "Psalms 54:6"
+        },
+        {
+          "key": "Psalms 64:3",
+          "target": "Psalms 63:3"
+        }
+      ]
+    },
+    "MT->English": {
+      "total": 2045,
+      "targetExists": 1978,
+      "targetMissing": 0,
+      "anchorChecked": 0,
+      "anchorOverlap": 0,
+      "anchorConflicts": 0,
+      "mappedToNull": 67,
+      "conflictSamples": [],
+      "missingSamples": []
+    },
+    "LXX->MT": {
+      "total": 4210,
+      "targetExists": 4160,
+      "targetMissing": 0,
+      "anchorChecked": 0,
+      "anchorOverlap": 0,
+      "anchorConflicts": 0,
+      "mappedToNull": 50,
+      "conflictSamples": [],
+      "missingSamples": []
+    },
+    "LXX->English": {
+      "total": 4350,
+      "targetExists": 4283,
+      "targetMissing": 0,
+      "anchorChecked": 0,
+      "anchorOverlap": 0,
+      "anchorConflicts": 0,
+      "mappedToNull": 67,
+      "conflictSamples": [],
+      "missingSamples": []
+    },
+    "English->MT": {
+      "total": 2022,
+      "targetExists": 1967,
+      "targetMissing": 0,
+      "anchorChecked": 0,
+      "anchorOverlap": 0,
+      "anchorConflicts": 0,
+      "mappedToNull": 55,
+      "conflictSamples": [],
+      "missingSamples": []
+    },
+    "English->LXX": {
+      "total": 4433,
+      "targetExists": 4204,
+      "targetMissing": 133,
+      "anchorChecked": 0,
+      "anchorOverlap": 0,
+      "anchorConflicts": 0,
+      "mappedToNull": 96,
+      "conflictSamples": [],
+      "missingSamples": [
+        {
+          "key": "Exodus 36:34",
+          "target": "Exodus 37:22"
+        },
+        {
+          "key": "1 Samuel 21:15",
+          "target": "1 Samuel 21:16"
+        },
+        {
+          "key": "2 Samuel 19:43",
+          "target": "2 Samuel 19:44"
+        },
+        {
+          "key": "1 Kings 5:4",
+          "target": "1 Kings 5:18"
+        },
+        {
+          "key": "1 Kings 5:5",
+          "target": "1 Kings 5:19"
+        },
+        {
+          "key": "1 Kings 5:6",
+          "target": "1 Kings 5:20"
+        },
+        {
+          "key": "1 Kings 5:7",
+          "target": "1 Kings 5:21"
+        },
+        {
+          "key": "1 Kings 5:8",
+          "target": "1 Kings 5:22"
+        },
+        {
+          "key": "1 Kings 5:9",
+          "target": "1 Kings 5:23"
+        },
+        {
+          "key": "1 Kings 5:10",
+          "target": "1 Kings 5:24"
+        },
+        {
+          "key": "1 Kings 5:11",
+          "target": "1 Kings 5:25"
+        },
+        {
+          "key": "1 Kings 5:12",
+          "target": "1 Kings 5:26"
+        },
+        {
+          "key": "1 Kings 5:13",
+          "target": "1 Kings 5:27"
+        },
+        {
+          "key": "1 Kings 5:14",
+          "target": "1 Kings 5:28"
+        },
+        {
+          "key": "1 Kings 5:15",
+          "target": "1 Kings 5:29"
+        },
+        {
+          "key": "1 Kings 5:16",
+          "target": "1 Kings 5:30"
+        },
+        {
+          "key": "1 Kings 21:11",
+          "target": "1 Kings 20:11"
+        },
+        {
+          "key": "1 Kings 21:12",
+          "target": "1 Kings 20:12"
+        },
+        {
+          "key": "2 Kings 12:21",
+          "target": "2 Kings 12:22"
+        },
+        {
+          "key": "1 Chronicles 6:1",
+          "target": "1 Chronicles 5:27"
+        },
+        {
+          "key": "1 Chronicles 6:2",
+          "target": "1 Chronicles 5:28"
+        },
+        {
+          "key": "1 Chronicles 6:3",
+          "target": "1 Chronicles 5:29"
+        },
+        {
+          "key": "1 Chronicles 6:4",
+          "target": "1 Chronicles 5:30"
+        },
+        {
+          "key": "1 Chronicles 6:5",
+          "target": "1 Chronicles 5:31"
+        },
+        {
+          "key": "1 Chronicles 6:6",
+          "target": "1 Chronicles 5:32"
+        }
+      ]
+    }
+  },
+  "normalizationConflicts": 160,
+  "normalizationConflictSamples": [
+    {
+      "pair": "LXX->MT",
+      "key": "Exodus 28:22",
+      "existing": {
+        "chapter": 28,
+        "verse": 22
+      },
+      "incoming": {
+        "chapter": 28,
+        "verse": 23
+      }
+    },
+    {
+      "pair": "LXX->MT",
+      "key": "Exodus 37:2",
+      "existing": {
+        "chapter": 36,
+        "verse": 10
+      },
+      "incoming": {
+        "chapter": 36,
+        "verse": 13
+      }
+    },
+    {
+      "pair": "LXX->English",
+      "key": "Exodus 37:2",
+      "existing": {
+        "chapter": 36,
+        "verse": 10
+      },
+      "incoming": {
+        "chapter": 36,
+        "verse": 13
+      }
+    },
+    {
+      "pair": "LXX->MT",
+      "key": "Exodus 37:2",
+      "existing": {
+        "chapter": 36,
+        "verse": 10
+      },
+      "incoming": {
+        "chapter": 36,
+        "verse": 14
+      }
+    },
+    {
+      "pair": "LXX->MT",
+      "key": "Exodus 37:3",
+      "existing": {
+        "chapter": 36,
+        "verse": 11
+      },
+      "incoming": {
+        "chapter": 36,
+        "verse": 15
+      }
+    },
+    {
+      "pair": "LXX->MT",
+      "key": "Exodus 37:4",
+      "existing": {
+        "chapter": 36,
+        "verse": 12
+      },
+      "incoming": {
+        "chapter": 36,
+        "verse": 16
+      }
+    },
+    {
+      "pair": "LXX->English",
+      "key": "Exodus 37:2",
+      "existing": {
+        "chapter": 36,
+        "verse": 10
+      },
+      "incoming": {
+        "chapter": 36,
+        "verse": 14
+      }
+    },
+    {
+      "pair": "LXX->English",
+      "key": "Exodus 37:3",
+      "existing": {
+        "chapter": 36,
+        "verse": 11
+      },
+      "incoming": {
+        "chapter": 36,
+        "verse": 15
+      }
+    },
+    {
+      "pair": "LXX->English",
+      "key": "Exodus 37:4",
+      "existing": {
+        "chapter": 36,
+        "verse": 12
+      },
+      "incoming": {
+        "chapter": 36,
+        "verse": 16
+      }
+    },
+    {
+      "pair": "LXX->MT",
+      "key": "Exodus 37:3",
+      "existing": {
+        "chapter": 36,
+        "verse": 11
+      },
+      "incoming": {
+        "chapter": 36,
+        "verse": 35
+      }
+    },
+    {
+      "pair": "LXX->MT",
+      "key": "Exodus 37:4",
+      "existing": {
+        "chapter": 36,
+        "verse": 12
+      },
+      "incoming": {
+        "chapter": 36,
+        "verse": 36
+      }
+    },
+    {
+      "pair": "LXX->MT",
+      "key": "Exodus 37:5",
+      "existing": {
+        "chapter": 36,
+        "verse": 17
+      },
+      "incoming": {
+        "chapter": 36,
+        "verse": 37
+      }
+    },
+    {
+      "pair": "LXX->MT",
+      "key": "Exodus 37:6",
+      "existing": {
+        "chapter": 36,
+        "verse": 18
+      },
+      "incoming": {
+        "chapter": 36,
+        "verse": 38
+      }
+    },
+    {
+      "pair": "LXX->English",
+      "key": "Exodus 37:3",
+      "existing": {
+        "chapter": 36,
+        "verse": 11
+      },
+      "incoming": {
+        "chapter": 36,
+        "verse": 35
+      }
+    },
+    {
+      "pair": "LXX->English",
+      "key": "Exodus 37:4",
+      "existing": {
+        "chapter": 36,
+        "verse": 12
+      },
+      "incoming": {
+        "chapter": 36,
+        "verse": 36
+      }
+    },
+    {
+      "pair": "LXX->English",
+      "key": "Exodus 37:5",
+      "existing": {
+        "chapter": 36,
+        "verse": 17
+      },
+      "incoming": {
+        "chapter": 36,
+        "verse": 37
+      }
+    },
+    {
+      "pair": "LXX->English",
+      "key": "Exodus 37:6",
+      "existing": {
+        "chapter": 36,
+        "verse": 18
+      },
+      "incoming": {
+        "chapter": 36,
+        "verse": 38
+      }
+    },
+    {
+      "pair": "LXX->MT",
+      "key": "Exodus 38:11",
+      "existing": {
+        "chapter": 37,
+        "verse": 10
+      },
+      "incoming": {
+        "chapter": 37,
+        "verse": 12
+      }
+    },
+    {
+      "pair": "LXX->English",
+      "key": "Exodus 38:11",
+      "existing": {
+        "chapter": 37,
+        "verse": 10
+      },
+      "incoming": {
+        "chapter": 37,
+        "verse": 12
+      }
+    },
+    {
+      "pair": "LXX->MT",
+      "key": "Exodus 38:11",
+      "existing": {
+        "chapter": 37,
+        "verse": 10
+      },
+      "incoming": {
+        "chapter": 37,
+        "verse": 14
+      }
+    },
+    {
+      "pair": "LXX->English",
+      "key": "Exodus 38:11",
+      "existing": {
+        "chapter": 37,
+        "verse": 10
+      },
+      "incoming": {
+        "chapter": 37,
+        "verse": 14
+      }
+    },
+    {
+      "pair": "LXX->MT",
+      "key": "Exodus 38:17",
+      "existing": {
+        "chapter": 37,
+        "verse": 20
+      },
+      "incoming": {
+        "chapter": 37,
+        "verse": 24
+      }
+    },
+    {
+      "pair": "LXX->English",
+      "key": "Exodus 38:17",
+      "existing": {
+        "chapter": 37,
+        "verse": 20
+      },
+      "incoming": {
+        "chapter": 37,
+        "verse": 24
+      }
+    },
+    {
+      "pair": "MT->LXX",
+      "key": "Exodus 37:28",
+      "existing": {
+        "chapter": 38,
+        "verse": 17
+      },
+      "incoming": {
+        "chapter": 38,
+        "verse": 18
+      }
+    },
+    {
+      "pair": "English->LXX",
+      "key": "Exodus 37:28",
+      "existing": {
+        "chapter": 38,
+        "verse": 17
+      },
+      "incoming": {
+        "chapter": 38,
+        "verse": 18
+      }
+    },
+    {
+      "pair": "LXX->MT",
+      "key": "Exodus 37:7",
+      "existing": {
+        "chapter": 36,
+        "verse": 19
+      },
+      "incoming": {
+        "chapter": 38,
+        "verse": 9
+      }
+    },
+    {
+      "pair": "LXX->MT",
+      "key": "Exodus 37:8",
+      "existing": {
+        "chapter": 36,
+        "verse": 20
+      },
+      "incoming": {
+        "chapter": 38,
+        "verse": 10
+      }
+    },
+    {
+      "pair": "LXX->MT",
+      "key": "Exodus 37:9",
+      "existing": {
+        "chapter": 36,
+        "verse": 21
+      },
+      "incoming": {
+        "chapter": 38,
+        "verse": 11
+      }
+    },
+    {
+      "pair": "LXX->MT",
+      "key": "Exodus 37:10",
+      "existing": {
+        "chapter": 36,
+        "verse": 22
+      },
+      "incoming": {
+        "chapter": 38,
+        "verse": 12
+      }
+    },
+    {
+      "pair": "LXX->MT",
+      "key": "Exodus 37:11",
+      "existing": {
+        "chapter": 36,
+        "verse": 23
+      },
+      "incoming": {
+        "chapter": 38,
+        "verse": 13
+      }
+    },
+    {
+      "pair": "LXX->MT",
+      "key": "Exodus 37:12",
+      "existing": {
+        "chapter": 36,
+        "verse": 24
+      },
+      "incoming": {
+        "chapter": 38,
+        "verse": 14
+      }
+    },
+    {
+      "pair": "LXX->MT",
+      "key": "Exodus 37:13",
+      "existing": {
+        "chapter": 36,
+        "verse": 25
+      },
+      "incoming": {
+        "chapter": 38,
+        "verse": 15
+      }
+    },
+    {
+      "pair": "LXX->MT",
+      "key": "Exodus 37:14",
+      "existing": {
+        "chapter": 36,
+        "verse": 26
+      },
+      "incoming": {
+        "chapter": 38,
+        "verse": 16
+      }
+    },
+    {
+      "pair": "LXX->MT",
+      "key": "Exodus 37:15",
+      "existing": {
+        "chapter": 36,
+        "verse": 27
+      },
+      "incoming": {
+        "chapter": 38,
+        "verse": 17
+      }
+    },
+    {
+      "pair": "LXX->MT",
+      "key": "Exodus 37:16",
+      "existing": {
+        "chapter": 36,
+        "verse": 28
+      },
+      "incoming": {
+        "chapter": 38,
+        "verse": 18
+      }
+    },
+    {
+      "pair": "LXX->English",
+      "key": "Exodus 37:7",
+      "existing": {
+        "chapter": 36,
+        "verse": 19
+      },
+      "incoming": {
+        "chapter": 38,
+        "verse": 9
+      }
+    },
+    {
+      "pair": "LXX->English",
+      "key": "Exodus 37:8",
+      "existing": {
+        "chapter": 36,
+        "verse": 20
+      },
+      "incoming": {
+        "chapter": 38,
+        "verse": 10
+      }
+    },
+    {
+      "pair": "LXX->English",
+      "key": "Exodus 37:9",
+      "existing": {
+        "chapter": 36,
+        "verse": 21
+      },
+      "incoming": {
+        "chapter": 38,
+        "verse": 11
+      }
+    },
+    {
+      "pair": "LXX->English",
+      "key": "Exodus 37:10",
+      "existing": {
+        "chapter": 36,
+        "verse": 22
+      },
+      "incoming": {
+        "chapter": 38,
+        "verse": 12
+      }
+    },
+    {
+      "pair": "LXX->English",
+      "key": "Exodus 37:11",
+      "existing": {
+        "chapter": 36,
+        "verse": 23
+      },
+      "incoming": {
+        "chapter": 38,
+        "verse": 13
+      }
+    }
+  ],
+  "coverageDelta": {
+    "perPair": {
+      "MT->LXX": {
+        "v1": 3822,
+        "now": 4311,
+        "nowConcrete": 4219,
+        "nowNull": 92
+      },
+      "MT->English": {
+        "v1": 2043,
+        "now": 2045,
+        "nowConcrete": 1978,
+        "nowNull": 67
+      },
+      "LXX->MT": {
+        "v1": 3796,
+        "now": 4210,
+        "nowConcrete": 4160,
+        "nowNull": 50
+      },
+      "LXX->English": {
+        "v1": 4294,
+        "now": 4350,
+        "nowConcrete": 4283,
+        "nowNull": 67
+      },
+      "English->MT": {
+        "v1": 1966,
+        "now": 2022,
+        "nowConcrete": 1967,
+        "nowNull": 55
+      },
+      "English->LXX": {
+        "v1": 4244,
+        "now": 4433,
+        "nowConcrete": 4337,
+        "nowNull": 96
+      }
+    },
+    "divergentBooksMtLxx": {
+      "Jeremiah": {
+        "mtToLxx": {
+          "total": 755,
+          "concrete": 724,
+          "null": 31
+        },
+        "lxxToMt": {
+          "total": 724,
+          "concrete": 724,
+          "null": 0
+        }
+      },
+      "Exodus": {
+        "mtToLxx": {
+          "total": 287,
+          "concrete": 275,
+          "null": 12
+        },
+        "lxxToMt": {
+          "total": 247,
+          "concrete": 247,
+          "null": 0
+        }
+      },
+      "1 Kings": {
+        "mtToLxx": {
+          "total": 251,
+          "concrete": 227,
+          "null": 24
+        },
+        "lxxToMt": {
+          "total": 201,
+          "concrete": 201,
+          "null": 0
+        }
+      },
+      "Joshua": {
+        "mtToLxx": {
+          "total": 55,
+          "concrete": 53,
+          "null": 2
+        },
+        "lxxToMt": {
+          "total": 52,
+          "concrete": 52,
+          "null": 0
+        }
+      },
+      "Proverbs": {
+        "mtToLxx": {
+          "total": 30,
+          "concrete": 20,
+          "null": 10
+        },
+        "lxxToMt": {
+          "total": 17,
+          "concrete": 17,
+          "null": 0
+        }
+      },
+      "Daniel": {
+        "mtToLxx": {
+          "total": 73,
+          "concrete": 70,
+          "null": 3
+        },
+        "lxxToMt": {
+          "total": 98,
+          "concrete": 70,
+          "null": 28
+        }
+      },
+      "Esther": {
+        "mtToLxx": {
+          "total": 91,
+          "concrete": 91,
+          "null": 0
+        },
+        "lxxToMt": {
+          "total": 105,
+          "concrete": 91,
+          "null": 14
+        }
+      }
+    }
+  },
+  "flagshipOffsets": [
+    {
+      "label": "MT Gen 32:1 -> LXX 31:55",
+      "expected": "31:55",
+      "actual": "31:55",
+      "ok": true
+    },
+    {
+      "label": "MT Num 17:1 -> LXX 16:36",
+      "expected": "16:36",
+      "actual": "16:36",
+      "ok": true
+    },
+    {
+      "label": "English Jer 25:15 -> LXX 32:1",
+      "expected": "32:1",
+      "actual": "32:1",
+      "ok": true
+    }
+  ],
+  "unrecognizedActions": {}
+}

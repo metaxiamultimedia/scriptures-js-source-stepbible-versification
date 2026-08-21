@@ -1,0 +1,79 @@
+DUAL LICENSE
+
+This package is dual-licensed:
+- Code (TypeScript/JavaScript): MIT License
+- Data (versification mapping derived from STEPBible TVTMS): CC BY 4.0
+
+================================================================================
+MIT LICENSE (Code)
+================================================================================
+
+Copyright (c) 2026 Benjamin Plunkert / Metaxia Multimedia
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+================================================================================
+CC BY 4.0 LICENSE (Data)
+================================================================================
+
+The versification mapping data in this package is derived from the STEPBible
+TVTMS (Translators Versification Traditions with Methodology for
+Standardisation), licensed under CC BY 4.0.
+
+Source: STEP Bible / Tyndale House Cambridge
+Repository: https://github.com/STEPBible/STEPBible-Data
+License: https://creativecommons.org/licenses/by/4.0/
+
+REQUIRED ATTRIBUTION:
+
+  Data provided by STEP Bible (www.STEPBible.org) under CC BY 4.0. Original work
+  by Tyndale House, Cambridge.
+  License: https://creativecommons.org/licenses/by/4.0/
+
+You are free to:
+- Share: copy and redistribute the material in any medium or format
+- Adapt: remix, transform, and build upon the material for any purpose,
+  including commercially
+
+Under the following terms:
+- Attribution: You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made.
+
+Full license text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+================================================================================
+MODIFICATIONS FROM ORIGINAL DATA
+================================================================================
+
+This package processes the original STEPBible TVTMS data as follows:
+- Parsed the Condensed section of the TVTMS text file.
+- Restricted to the 39 Old Testament (Protestant canon) books.
+- Restricted to three numbering schemes: Hebrew/Masoretic (MT), the first Greek
+  column (LXX/Septuagint), and English KJV. The Latin column and additional
+  Greek variant columns are omitted for this version.
+- New Testament rows are omitted (Textus-Receptus Greek NT numbering already
+  matches the KJV; core handles that).
+- Reformatted from the tab-delimited TVTMS table into a compact JSON lookup
+  keyed by scheme pair, storing ONLY verses whose numbering differs from
+  identity (identity is the implicit default).
+- Validated the generated mapping targets against actual verse text in
+  companion scripture packages; see data/stepbible-versification/validation-report.json.
+
+The generated mapping is a reformatting of the TVTMS data; the underlying
+versification facts are unchanged.

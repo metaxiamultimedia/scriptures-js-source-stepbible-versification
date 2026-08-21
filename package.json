@@ -1,0 +1,64 @@
+{
+  "name": "@metaxia/scriptures-source-stepbible-versification",
+  "version": "0.1.0",
+  "description": "STEPBible TVTMS cross-tradition versification mapping (MT/LXX/English) for @metaxia/scriptures-core. Normalized, validated against actual verse text.",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./source": {
+      "types": "./dist/source.d.ts",
+      "import": "./dist/source.js"
+    },
+    "./data/*": "./data/*"
+  },
+  "files": [
+    "dist",
+    "data"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "import": "tsx scripts/import.ts",
+    "test": "vitest run",
+    "lint": "eslint src --ext .ts",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "bible",
+    "versification",
+    "tvtms",
+    "stepbible",
+    "masoretic",
+    "septuagint",
+    "kjv",
+    "scriptures"
+  ],
+  "author": "Benjamin Plunkert",
+  "license": "(MIT AND CC-BY-4.0)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/metaxiamultimedia/scriptures-js-source-stepbible-versification"
+  },
+  "bugs": {
+    "url": "https://github.com/metaxiamultimedia/scriptures-js-source-stepbible-versification/issues"
+  },
+  "homepage": "https://github.com/metaxiamultimedia/scriptures-js-source-stepbible-versification#readme",
+  "peerDependencies": {
+    "@metaxia/scriptures-core": "^2.4.1"
+  },
+  "devDependencies": {
+    "@metaxia/scriptures-core": "^2.4.1",
+    "@types/node": "^22.0.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.0",
+    "vitest": "^4.0.0"
+  }
+}
