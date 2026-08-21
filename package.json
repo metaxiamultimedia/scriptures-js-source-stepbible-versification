@@ -1,6 +1,6 @@
 {
   "name": "@metaxia/scriptures-source-stepbible-versification",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "STEPBible TVTMS cross-tradition versification mapping (MT/LXX/English) for @metaxia/scriptures-core. Normalized, validated against actual verse text.",
   "type": "module",
   "publishConfig": {
@@ -22,7 +22,8 @@
   },
   "files": [
     "dist",
-    "data"
+    "data/**/mapping.json",
+    "data/**/SOURCE.json"
   ],
   "scripts": {
     "build": "tsc",
