@@ -61,6 +61,8 @@ npm test
 
 > Data provided by STEP Bible (www.STEPBible.org) under CC BY 4.0. Original work by Tyndale House, Cambridge.
 
+**Canonical source:** STEPBible asks that others be referred to [github.com/STEPBible/STEPBible-Data](https://github.com/STEPBible/STEPBible-Data) as the authoritative source of the TVTMS data (so corrections flow from one place). CC BY 4.0 permits our redistribution of this reformatted subset, but for the original, complete, up-to-date data please go upstream.
+
 ### Changes made to the data (CC BY "indicate changes")
 
 This package **reformats** the TVTMS text file into JSON: it restricts to the 39 OT books and the MT/LXX/English subset, drops the Latin and extra-Greek columns and the NT rows, and stores only entries that differ from identity. The underlying versification facts are unchanged. See the `MODIFICATIONS` section of [LICENSE](./LICENSE).
