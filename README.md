@@ -1,5 +1,7 @@
 # @metaxia/scriptures-source-stepbible-versification
 
+It is a data source for [GematriaBible.com](https://gematriabible.com) — an interlinear Bible with gematria values and Strong's numbers.
+
 Cross-tradition **versification** mapping for [@metaxia/scriptures-core](https://github.com/metaxiamultimedia/scriptures-js-core), derived from the STEPBible **TVTMS** (Translators Versification Traditions with Methodology for Standardisation).
 
 The Old Testament is numbered differently in the Hebrew/Masoretic, Greek/Septuagint, and English/KJV traditions. This package provides a normalized, empirically-validated lookup table between those three numbering schemes and registers it as a `VersificationSource` with core.
