@@ -37,7 +37,9 @@ sourceInfo.mapRef('Genesis', 1, 1, 'MT', 'LXX');   // -> { chapter: 1, verse: 1 
 sourceInfo.mapRef('Psalms', 3, 1, 'MT', 'English');// -> null (no numbered equivalent)
 ```
 
-Importing the package for its side effect calls `registerVersification(sourceInfo)` on core, so once core exposes the versification registry the mapping is available to `mapVerse`/`getParallelVerses` automatically, preferred over the built-in.
+Importing the package for its side effect calls `registerVersification(sourceInfo)` on core (2.4.1+), so `mapVerse` / `getParallelVerses` / `mapVerseToEdition` use this table automatically, preferred over core's built-in one.
+
+Consumers that map Hebrew<->KJV should import this package rather than rely on core's built-in table alone: core 2.4.3's hand-written table disagreed with TVTMS in seven regions (Psalm 13, Isaiah 64, Nehemiah 3-4 and 7:68+, Job 40-41, Daniel 3-4, 1 Chronicles 6:1-15), and TVTMS was right at every one when checked against the OHB / KJV verse text.
 
 ## Development
 
@@ -50,10 +52,10 @@ npm test
 
 `npm run import`:
 
-1. Resolves STEPBible-Data's current `master` commit SHA via the GitHub API and fetches the TVTMS file **at that pinned SHA** (cached under `source/`). Writes `data/stepbible-versification/SOURCE.json` (`repo`, `sha`, `sha256`, `retrieved: null` — a human stamps `retrieved`).
+1. Resolves STEPBible-Data's current `master` commit SHA via the GitHub API and fetches the TVTMS file **at that pinned SHA** (cached under `source/`). Writes `data/stepbible-versification/SOURCE.json` (`repo`, `sha`, `sha256`, `retrieved: null` — a human stamps `retrieved`; the stamp is kept when a re-import lands on the same pin). Set `TVTMS_SHA=<sha>` to re-normalize at the existing pin after a parser change instead of moving to master.
 2. Parses the TVTMS Condensed table into aligned per-tradition rows.
 3. Normalizes to `data/stepbible-versification/mapping.json` (identity-omitted).
-4. Validates every mapped target against actual verse text in the companion packages (openscriptures-OHB = MT, crosswire-KJV = English, swete-lxx = LXX) and writes `data/stepbible-versification/validation-report.json`.
+4. Validates every mapped target against actual verse text in the companion packages (openscriptures-OHB = MT, crosswire-KJV = English, swete-lxx = LXX) and writes `data/stepbible-versification/validation-report.json`. What "validated" means today: every concrete target is checked to **exist** in the target edition, and numeric anchors are compared where both sides have them (in practice none do, so `anchorChecked` is 0 — the report is an existence check, not a content check). Pairs whose ground-truth package is not present at import time (swete-lxx is not published) are marked `groundTruthAvailable: false` and skipped rather than reported as missing.
 
 ## Source & attribution
 

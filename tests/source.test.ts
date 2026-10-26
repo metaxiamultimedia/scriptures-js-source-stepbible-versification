@@ -154,3 +154,61 @@ describe('honesty guard (isReliable + divergent-book identity refusal)', () => {
     expect(sourceInfo.mapRef('Genesis', 1, 1, 'MT', 'LXX')).toEqual({ chapter: 1, verse: 1 });
   });
 });
+
+describe('subverse ranges are parts of ONE verse, not verse ranges (import parser)', () => {
+  // TVTMS files the Greek additions to Esther under KJV verses as subverses:
+  // `LongVerse/LVExtra  Est.1:1.1-17 (English KJV)  NoVerse (Hebrew)`. That is
+  // Esther 1:1 parts 1-17, NOT verses 1:1-17 — the whole-verse row
+  // (`OneToOne Est.1:1.0 / Est.1:1`) is what decides the verse-level mapping.
+  // v0.1.1 read it as a verse range and emitted bogus nulls for English Esther
+  // 1:1-17, 3:13, 4:17, 5:1-10, 8:12-24, 10:3-10 and Joshua 9:27, 24:33.
+  it('English Esther 1:1 -> MT 1:1 (identity; the Greek additions are subverses)', () => {
+    expect(sourceInfo.mapRef('Esther', 1, 1, 'English', 'MT')).toEqual({ chapter: 1, verse: 1 });
+    expect(sourceInfo.mapRef('Esther', 1, 17, 'English', 'MT')).toEqual({ chapter: 1, verse: 17 });
+    expect(sourceInfo.mapRef('Esther', 8, 12, 'English', 'MT')).toEqual({ chapter: 8, verse: 12 });
+    expect(sourceInfo.mapRef('Esther', 10, 3, 'English', 'MT')).toEqual({ chapter: 10, verse: 3 });
+  });
+  it('English Joshua 9:27 and 24:33 -> MT identity (LXX extras are subverses)', () => {
+    expect(sourceInfo.mapRef('Joshua', 9, 27, 'English', 'MT')).toEqual({ chapter: 9, verse: 27 });
+    expect(sourceInfo.mapRef('Joshua', 24, 33, 'English', 'MT')).toEqual({ chapter: 24, verse: 33 });
+  });
+  it('the only English->MT nulls left are genuine KJV-only verses', () => {
+    const m = JSON.parse(readFileSync(MAPPING_PATH, 'utf-8')) as Record<string, Record<string, unknown>>;
+    const nulls = Object.entries(m['English->MT'])
+      .filter(([, v]) => v === null)
+      .map(([k]) => k)
+      .sort();
+    // KJV 7:68 is absent from the Leningrad Codex; KJV Ps 13:6 and Isa 64:1 are
+    // the second halves of Hebrew 13:6 and 63:19.
+    expect(nulls).toEqual(['Isaiah 64:1', 'Nehemiah 7:68', 'Psalms 13:6']);
+  });
+  it('MT Joshua 8:30 -> LXX 9:2 (TVTMS: MT 8:30-35 = LXX 9:2.1-6); LXX 9:3 has no TVTMS row, so it is refused', () => {
+    expect(sourceInfo.mapRef('Joshua', 8, 30, 'MT', 'LXX')).toEqual({ chapter: 9, verse: 2 });
+    expect(sourceInfo.mapRef('Joshua', 9, 3, 'LXX', 'MT')).toBeNull();
+  });
+  it('LXX Exodus 37:3-6 = MT 36:35-38 (the veil), not MT 36:11-18', () => {
+    expect(sourceInfo.mapRef('Exodus', 37, 3, 'LXX', 'MT')).toEqual({ chapter: 36, verse: 35 });
+    expect(sourceInfo.mapRef('Exodus', 37, 6, 'LXX', 'MT')).toEqual({ chapter: 36, verse: 38 });
+  });
+});
+
+describe('MT->English seams that core\'s built-in table used to get wrong', () => {
+  const cases: [string, number, number, number, number][] = [
+    ['Psalms', 13, 2, 13, 1],
+    ['Isaiah', 64, 1, 64, 2],
+    ['Nehemiah', 3, 33, 4, 1],
+    ['Nehemiah', 4, 1, 4, 7],
+    ['Nehemiah', 7, 68, 7, 69],
+    ['Job', 40, 25, 41, 1],
+    ['Job', 41, 1, 41, 9],
+    ['Daniel', 3, 31, 4, 1],
+    ['Daniel', 4, 1, 4, 4],
+    ['1 Chronicles', 6, 1, 6, 16],
+  ];
+  it.each(cases)('MT %s %i:%i -> English %i:%i', (book, hc, hv, ec, ev) => {
+    expect(sourceInfo.mapRef(book, hc, hv, 'MT', 'English')).toEqual({ chapter: ec, verse: ev });
+  });
+  it('MT Psalm 13:1 is a title verse with no KJV number', () => {
+    expect(sourceInfo.mapRef('Psalms', 13, 1, 'MT', 'English')).toBeNull();
+  });
+});

@@ -185,15 +185,24 @@ function parseRefToken(token: string): Ref[] {
     return [{ book, chapter, verse: 0, isTitle: true }];
   }
 
+  // SUBVERSE range of ONE verse: "Vs.a-b" / "Vs!a-b" with a marker on the left and
+  // a bare tail (e.g. Est.1:1.1-17 = subverses 1-17 of Esther 1:1, the Greek
+  // additions STEP files under KJV 1:1; Jos.9:27.1-6; Exo.28:22.1-6). This is one
+  // verse with a part, NOT verses 1..17 — reading it as a verse range used to
+  // emit bogus verse-level nulls (English Esther 1:1-17 -> "no Hebrew").
+  const subRangeM = versePart.match(/^(\d+)([!.])([a-z0-9]+)-([a-z0-9]+)$/i);
+  if (subRangeM) {
+    const verse = parseInt(subRangeM[1], 10);
+    return [{ book, chapter, verse, part: `${subRangeM[2]}${subRangeM[3]}-${subRangeM[4]}` }];
+  }
+
   // Cross-chapter range "Vs-Ch:Vs" (e.g. Gen.31:55-32:1 -> handled by caller
-  // splitting; here we only see single-chapter tails). Range "a-b" with
-  // optional subverse markers on either end (e.g. 22:1-6, 28:22.1-6, 3:2-8).
-  const rangeM = versePart.match(
-    /^(\d+)(?:[!.]([a-z0-9]))?-(\d+)(?:[!.]([a-z0-9]))?$/i
-  );
+  // splitting; here we only see single-chapter tails). Range "a-b" with an
+  // optional subverse marker on the right end (e.g. 22:1-6, 3:2-8, 24:33-34.1).
+  const rangeM = versePart.match(/^(\d+)-(\d+)(?:[!.]([a-z0-9]+))?$/i);
   if (rangeM) {
     const a = parseInt(rangeM[1], 10);
-    const b = parseInt(rangeM[3], 10);
+    const b = parseInt(rangeM[2], 10);
     const out: Ref[] = [];
     if (b >= a && b - a < 400) {
       for (let v = a; v <= b; v++) out.push({ book, chapter, verse: v });
@@ -515,6 +524,11 @@ function normalize(rows: AlignedRow[]): NormalizeResult {
         const table = tables[pairKey];
         for (const { from: f, to: t } of correlate(row.action, fromCell, toCell)) {
           if (f.isTitle) continue; // can't key a title at verse granularity
+          // A SUBVERSE of the source (Est.1:1.1-17, Jos.24:33.1, Est.4:17.4 ...) with
+          // no equivalent says nothing about the verse as a whole: the verse-level
+          // row (Est.1:1.0 / Jos.24:33 OneToOne) decides that. Keying such a null
+          // at verse granularity would wrongly declare the WHOLE verse absent.
+          if (f.part && f.part !== '.0' && (t === null || t.isTitle)) continue;
           const bookFull = OT_BOOKS[f.book].full;
           const isDivergent = MT_LXX_DIVERGENT_BOOKS.has(bookFull);
           const isMtLxx = (from === 'MT' && to === 'LXX') || (from === 'LXX' && to === 'MT');
@@ -636,6 +650,12 @@ interface ValidationReport {
       anchorOverlap: number;
       anchorConflicts: number;
       mappedToNull: number;
+      /**
+       * false when the target scheme's ground-truth package was not present at
+       * import time (e.g. swete-lxx is not published): existence/anchor checks
+       * were SKIPPED for this pair, so targetExists/targetMissing are 0.
+       */
+      groundTruthAvailable: boolean;
       conflictSamples: Array<{ key: string; target: string; reason: string }>;
       missingSamples: Array<{ key: string; target: string }>;
     }
@@ -746,9 +766,12 @@ async function validate(
       anchorOverlap: 0,
       anchorConflicts: 0,
       mappedToNull: 0,
+      groundTruthAvailable: existsSync(GT[toS]),
       conflictSamples: [] as Array<{ key: string; target: string; reason: string }>,
       missingSamples: [] as Array<{ key: string; target: string }>,
     };
+    if (!stats.groundTruthAvailable)
+      console.warn(`  ${pairKey}: ground truth for ${toS} not found at ${GT[toS]} — existence checks skipped`);
 
     for (const [key, value] of Object.entries(table)) {
       stats.total++;
@@ -756,6 +779,7 @@ async function validate(
         stats.mappedToNull++;
         continue;
       }
+      if (!stats.groundTruthAvailable) continue;
       // key = "Book Full ch:vs"
       const m = key.match(/^(.+) (\d+):(\d+)$/);
       if (!m) continue;
@@ -816,14 +840,27 @@ async function main() {
   await mkdir(DATA_DIR, { recursive: true });
   await mkdir(SOURCE_DIR, { recursive: true });
 
-  const sha = await resolveMasterSha();
-  console.log(`STEPBible-Data master SHA: ${sha}`);
+  // TVTMS_SHA=<sha> re-imports at a pinned upstream commit (reproducible
+  // re-normalization after a parser fix) instead of moving the pin to master.
+  const sha = process.env.TVTMS_SHA ?? (await resolveMasterSha());
+  console.log(`STEPBible-Data ${process.env.TVTMS_SHA ? 'pinned' : 'master'} SHA: ${sha}`);
   const text = await fetchTvtms(sha);
   const sha256 = createHash('sha256').update(text, 'utf-8').digest('hex');
 
+  // Keep the human-stamped `retrieved` date when the pin (and content) is unchanged.
+  let retrieved: string | null = null;
+  const sourcePath = join(DATA_DIR, 'SOURCE.json');
+  if (existsSync(sourcePath)) {
+    try {
+      const prev = JSON.parse(await readFile(sourcePath, 'utf-8')) as { sha?: string; sha256?: string; retrieved?: string | null };
+      if (prev.sha === sha && prev.sha256 === sha256) retrieved = prev.retrieved ?? null;
+    } catch {
+      /* ignore unreadable SOURCE.json */
+    }
+  }
   await writeFile(
-    join(DATA_DIR, 'SOURCE.json'),
-    JSON.stringify({ repo: REPO, sha, sha256, retrieved: null }, null, 2) + '\n',
+    sourcePath,
+    JSON.stringify({ repo: REPO, sha, sha256, retrieved }, null, 2) + '\n',
     'utf-8'
   );
 
@@ -864,7 +901,7 @@ async function main() {
   console.log('\nValidation summary:');
   for (const [pair, s] of Object.entries(report.pairs)) {
     console.log(
-      `  ${pair}: total=${s.total} targetExists=${s.targetExists} missing=${s.targetMissing} null=${s.mappedToNull} anchorChecked=${s.anchorChecked} anchorOverlap=${s.anchorOverlap} anchorConflicts=${s.anchorConflicts}`
+      `  ${pair}: total=${s.total} targetExists=${s.targetExists} missing=${s.targetMissing} null=${s.mappedToNull} anchorChecked=${s.anchorChecked} anchorOverlap=${s.anchorOverlap} anchorConflicts=${s.anchorConflicts}${s.groundTruthAvailable ? '' : ' (ground truth unavailable; existence not checked)'}`
     );
   }
   console.log(`  normalizationConflicts=${report.normalizationConflicts}`);

@@ -1,6 +1,6 @@
 {
   "name": "@metaxia/scriptures-source-stepbible-versification",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "STEPBible TVTMS cross-tradition versification mapping (MT/LXX/English) for @metaxia/scriptures-core. Normalized, validated against actual verse text.",
   "type": "module",
   "publishConfig": {
@@ -46,12 +46,15 @@
   "license": "(MIT AND CC-BY-4.0)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/metaxiamultimedia/scriptures-js-source-stepbible-versification"
+    "url": "git+https://github.com/metaxiamultimedia/scriptures-js-source-stepbible-versification.git"
   },
   "bugs": {
     "url": "https://github.com/metaxiamultimedia/scriptures-js-source-stepbible-versification/issues"
   },
   "homepage": "https://github.com/metaxiamultimedia/scriptures-js-source-stepbible-versification#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "peerDependencies": {
     "@metaxia/scriptures-core": "^2.4.1 || ^3.0.0"
   },
